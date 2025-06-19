@@ -136,7 +136,7 @@ A aplicação Rails expõe os seguintes endpoints para o recurso `livros`, acess
 ## Visualizando os Logs no Kibana
 
 1.  **Gere um Log:** Faça uma ou mais requisições para a sua API (ex: `GET http://localhost:8081/livros`) para que o Rails gere um log, o Logstash o processe e o Elasticsearch o indexe.
-    > **OBS:** É crucial que você gere um log primeiro para que o índice seja criado no Elasticsearch. O Kibana não encontrará o padrão de índice se nenhum dado tiver sido enviado ainda.
+    > **OBS:** É crucial que você gere um log primeiro para que o índice seja criado no Elasticsearch. O Kibana não encontrará o padrão de índice se nenhum dado tiver sido enviado ainda. Normalmente a aplicação rails gera um log no "migrate"
 
 2.  **Acesse o Kibana:** Abra `http://localhost:5601` no seu navegador.
 3.  **Faça Login:** Use o usuário `elastic` e a senha que você definiu em `ELASTIC_PASSWORD`.
