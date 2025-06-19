@@ -1,0 +1,23 @@
+# Confurações ddo bundle
+/.bundle
+
+# Variaveis de ambiente
+/.env*
+!/.env*.erb
+
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+# Arquivo com a chave de criptografia do Rails para descriptografar
+# o arquivo credentials.yml.enc
+/config/master.key
