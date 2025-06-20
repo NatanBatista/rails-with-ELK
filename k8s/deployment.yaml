@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rails-elk
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rails-elk
+  template:
+    metadata:
+      labels:
+        app: rails-elk
+    spec:
+      containers:
+      - name: rails-elk
+        image: rails-elk:1.0
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        env:
+          - name: DATABASE_USER
+            valueFrom:
+              secretKeyRef:
+                name: rails-elk-secret
+                key: DATABASE_USER
+
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: rails-elk-secret
+                key: DATABASE_PASSWORD
+                
+          - name: DATABASE_NAME
+            valueFrom:
+              secretKeyRef:
+                name: rails-elk-secret
+                key: DATABASE_NAME
+
+          - name: SECRET_KEY_BASE
+            valueFrom:
+              secretKeyRef:
+                name: rails-elk-secret
+                key: SECRET_KEY_BASE
+
+          - name: DATABASE_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: rails-elk-config
+                key: DATABASE_HOST
+
+          - name: DATABASE_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: rails-elk-config
+                key: DATABASE_PORT
