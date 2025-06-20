@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rails-elk-config
+data:
+  DATABASE_HOST: "host.minikube.internal"
+  DATABASE_PORT: "5432"
